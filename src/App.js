@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import testData from './headhuntar_swarfarm_win10_optimizer_export.json';
 
-function App() {
+const RuneList = (props) => {
+  const runes = testData.runes;
+  const runeList = runes.map((rune) =>
+    <li>{rune.rune_id}</li>
+  );
+  return (
+    <ul>{runeList}</ul>
+  );
+}
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RuneList />
     </div>
   );
 }

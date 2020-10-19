@@ -1,2 +1,2 @@
-# dashboard-app
-using react to build a dashboard application
+working on dashboard app using React
+day 1 = oct 19, 20

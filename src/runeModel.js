@@ -14,10 +14,10 @@ const rune = {
   "rank": 0, // unknown
   "sec_eff": [
     [
-      8, // set
-      8, // value
-      0,
-      0
+      8, // stat
+      8, // base value
+      0, // gem 0 or 1
+      0 // enchant +value
     ],
     [
       4,

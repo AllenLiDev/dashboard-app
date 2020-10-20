@@ -1,5 +1,8 @@
 import React from 'react';
-import testData from './headhuntar_swarfarm_win10_optimizer_export.json';
+import testData from './swarfarm.json';
+import originalTestData from './exporter.json';
+
+const runesDB = [];
 
 // get all unequiped runes
 const RuneList = (props) => {
@@ -26,8 +29,8 @@ const EquippedRuneList = (props) => {
 }
 
 const App = () => {
-  const runes = testData.runes;
-  const units = testData.unit_list;
+  const runes = originalTestData.runes;
+  const units = originalTestData.unit_list;
   for(const unit of units) {
     for(const rune of unit.runes) {
       runes.push(rune);

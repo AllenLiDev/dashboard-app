@@ -17,7 +17,7 @@ const EquippedRuneList = (props) => {
   const units = testData.unit_list;
   const equippedRuneList = units.map((unit) =>
     unit.runes.map(rune =>
-      <li>{rune.rune_id}</li>
+      runesDB.push(rune)
     )
   )
   return (
@@ -26,11 +26,17 @@ const EquippedRuneList = (props) => {
 }
 
 const App = () => {
-  console.log(testData);
+  const runes = testData.runes;
+  const units = testData.unit_list;
+  for(const unit of units) {
+    for(const rune of unit.runes) {
+      runes.push(rune);
+    }
+  }
+  console.log(runes);
   return (
     <div className="App">
-      <RuneList />
-      <EquippedRuneList />
+      {runes.length} runes found
     </div>
   );
 }

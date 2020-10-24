@@ -1,4 +1,7 @@
 import React from 'react';
+import Rune from './Rune';
+
+// data import
 import testData from './swarfarm.json';
 import originalTestData from './exporter.json';
 
@@ -29,7 +32,9 @@ const EquippedRuneList = (props) => {
 }
 
 const App = () => {
+  // unequipped
   const runes = originalTestData.runes;
+  // equipped
   const units = originalTestData.unit_list;
   for(const unit of units) {
     for(const rune of unit.runes) {
@@ -40,6 +45,7 @@ const App = () => {
   return (
     <div className="App">
       {runes.length} runes found
+      <Rune data={runes}/>
     </div>
   );
 }

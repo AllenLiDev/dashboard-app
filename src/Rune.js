@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import CloseIcon from '@material-ui/icons/Close';
 import { List, ListItem, ListItemText } from '@material-ui/core';
+import { getSetName, getStatName, getRuneGrade } from './helper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +39,7 @@ const Rune = (props) => {
         <Grid item xs={12}>
           <Paper className={classes.heading}>
             +{rune.upgrade_curr}
-            {rune.set_id} rune
+            {getSetName(rune.set_id)} rune
           ({rune.slot_no})
           <CloseIcon />
           </Paper>
@@ -72,7 +72,7 @@ const Rune = (props) => {
           <Paper className={classes.info}>
             <List>
               <ListItem>
-                <ListItemText primary='default grade' />
+                <ListItemText primary={getRuneGrade(rune.extra)} />
               </ListItem>
               <ListItem>
                 <ListItemText primary='calculated efficiency' />

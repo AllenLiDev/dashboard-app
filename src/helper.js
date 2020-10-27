@@ -7,7 +7,7 @@ const setNames = [
 
 // returns the name of rune set for given id
 const getSetName = (id) => {
-  return setNames[id-1];
+  return setNames[id - 1];
 };
 
 // array with stat type names
@@ -17,10 +17,21 @@ const statNames = [
 
 // returns the name of type of stat for given id
 const getStatName = (id) => {
-  return statNames[id-1];
+  return statNames[id - 1];
 };
+
+// array with grades
+const runeGrades = [
+  'Normal', 'Normal', 'Magic', 'Rare', 'Epic', 'Legendary'
+]
+
+// return the grade of rune for given value
+const getRuneGrade = (value) => {
+  return runeGrades[value - 1];
+}
 
 export {
   getSetName,
-  getStatName
+  getStatName,
+  getRuneGrade
 }

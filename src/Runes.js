@@ -19,7 +19,7 @@ const Runes = (props) => {
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid rows={props.data} columns={columns} pageSize={5} checkboxSelection />
       </div>
-      <Rune />
+      <Rune rune={props.data[0]}/>
     </div>
   );
 }

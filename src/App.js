@@ -1,5 +1,5 @@
 import React from 'react';
-import Rune from './Rune';
+import Runes from './Runes';
 
 // data import
 import testData from './swarfarm.json';
@@ -45,7 +45,7 @@ const App = () => {
   return (
     <div className="App">
       {runes.length} runes found
-      <Rune data={runes}/>
+      <Runes data={runes}/>
     </div>
   );
 }

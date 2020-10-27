@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import CloseIcon from '@material-ui/icons/Close';
+import RuneImage from './RuneImage';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import { getSetName, getStatName, getRuneGrade } from './helper';
 
@@ -13,16 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
   info: {
     height: '100%',
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
   },
   heading: {
 
@@ -47,8 +38,9 @@ const Rune = (props) => {
         <Grid item xs={9}>
           <Paper className={classes.secondaryStats}>
             <Grid item>
-              <div className={classes.image}>
-                <img className={classes.img} alt={rune.pri_eff} src="/static/images/grid/complex.jpg" />
+              <RuneImage />
+              <div>
+                {rune.pri_eff}
                 {rune.prefix_eff}
               </div>
             </Grid>

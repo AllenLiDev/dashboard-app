@@ -6,6 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import RuneImage from './RuneImage';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import { getSetName, getStatName, getRuneGrade } from './helper';
+import RuneSecondaryStatsList from './RuneSecondaryStatsList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,49 +17,41 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   heading: {
-
+    textAlign: 'Center',
   },
+  closeIcon: {
+    right: 0,
+  }
 }));
 
 const Rune = (props) => {
   const classes = useStyles();
   const rune = props.rune;
-  console.log(rune)
+
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.heading}>
             +{rune.upgrade_curr}
-            {getSetName(rune.set_id)} rune
-          ({rune.slot_no})
-          <CloseIcon />
+            {getSetName(rune.set_id)} Rune
+            ({rune.slot_no})
+          <CloseIcon className={classes.closeIcon}/>
           </Paper>
         </Grid>
-        <Grid item xs={9}>
-          <Paper className={classes.secondaryStats}>
+        <Grid item container xs={9} direction="column">
+          <Grid item container spacing={1}>
             <Grid item>
               <RuneImage />
-              <div>
-                {rune.pri_eff}
-                {rune.prefix_eff}
-              </div>
             </Grid>
-            <List>
-              <ListItem>
-                <ListItemText primary={rune.sec_eff[0]} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary={rune.sec_eff[1]} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary={rune.sec_eff[2]} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary={rune.sec_eff[3]} />
-              </ListItem>
-            </List>
-          </Paper>
+            <Grid item>
+              <h2>{getStatName(rune.pri_eff[0])}{rune.pri_eff[1]}</h2>
+              <h4>{getStatName(rune.prefix_eff[0])}{rune.prefix_eff[1]}</h4>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <RuneSecondaryStatsList stats={rune.sec_eff}/>
+          </Grid>
         </Grid>
         <Grid item xs={3}>
           <Paper className={classes.info}>

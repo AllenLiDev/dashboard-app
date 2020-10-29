@@ -1,3 +1,5 @@
+import Runes from "./Runes";
+
 // array with rune set names
 const setNames = [
   'Energy', 'Guard', 'Swift', 'Blade', 'Rage', 'Focus', 'Endure', 'Fatal', '9. Error', 'Despair',
@@ -30,8 +32,35 @@ const getRuneGrade = (value) => {
   return runeGrades[value - 1];
 }
 
+// returns the fastest rune for set, slot, default 5
+const fastestInSet = (data, set, slot, amount) => {
+  let fastest = [
+    [5, {}],
+    [4, {}],
+    [3, {}],
+    [2, {}],
+    [1, {}],
+  ];
+
+  for (const rune of data) {
+    for (const subStat of rune['sec_eff']) {
+      if (subStat[0] === 8) {
+        for (let i = 0; i < 5; i++) {
+          if (subStat[1] > fastest[i][0]) {
+            fastest.splice(i, 0, [subStat[1], rune]);
+            break;
+          }
+        }
+      }
+    }
+  }
+  fastest = fastest.slice(0, amount ? amount : 5);
+  console.log(fastest);
+}
+
 export {
   getSetName,
   getStatName,
-  getRuneGrade
+  getRuneGrade,
+  fastestInSet,
 }

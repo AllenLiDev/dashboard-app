@@ -4,6 +4,7 @@ import Runes from './Runes';
 // data import
 import testData from './swarfarm.json';
 import originalTestData from './exporter.json';
+import {fastestInSet} from './helper';
 
 const runesDB = [];
 
@@ -41,7 +42,8 @@ const App = () => {
       runes.push(rune);
     }
   }
-  console.log(runes);
+  fastestInSet(runes);
+
   return (
     <div className="App">
       {runes.length} runes found

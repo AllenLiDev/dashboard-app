@@ -10,10 +10,9 @@ const columns = [
 
 const Runes = (props) => {
   let count = 1;
-  for (const rune of props.data) {
+  for (let rune of props.data) {
     rune.id = count++;
   }
-  console.log(props.data);
   return (
     <div>
       <div style={{ height: 400, width: '100%' }}>

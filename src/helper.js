@@ -55,7 +55,7 @@ const fastestInSet = (data, set, slot, amount) => {
     }
   }
   fastest = fastest.slice(0, amount ? amount : 5);
-  console.log(fastest);
+  return fastest;
 }
 
 export {

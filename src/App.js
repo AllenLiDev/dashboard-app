@@ -1,5 +1,6 @@
 import React from 'react';
 import Runes from './Runes';
+import Stats from './Stats';
 
 // data import
 import testData from './swarfarm.json';
@@ -42,12 +43,12 @@ const App = () => {
       runes.push(rune);
     }
   }
-  fastestInSet(runes);
 
   return (
     <div className="App">
       {runes.length} runes found
       <Runes data={runes}/>
+      <Stats fastest={fastestInSet(runes)} />
     </div>
   );
 }

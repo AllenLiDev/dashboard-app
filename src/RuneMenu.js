@@ -10,6 +10,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 
 import Rune from './Rune';
+import { getSetId, getStatId } from './helper';
 import runeImage from './rune.jpg';
 
 
@@ -53,11 +54,38 @@ const RuneMenu = (props) => {
 
   useEffect(() => {
     let filteredRunes = []
-    for(const rune of props.data) {
-      console.log(rune.slot_no, slotFilter)
-      if(slotFilter != 'None'){
-        if(rune.slot_no == slotFilter){
-          filteredRunes.push(rune);
+    let subStatOneId = getStatId(subStatOne);
+    let subStatTwoId = getStatId(subStatTwo);
+    for (const rune of props.data) {
+      if (slotFilter === 'None' || rune.slot_no == slotFilter) {
+        if (runeFilter === 'None' || rune.set_id === getSetId(runeFilter)) {
+          if (statFilter === 'None' || rune.pri_eff[0] === getStatId(statFilter)) {
+            if (subStatOne === 'None') {
+              if (subStatTwo === 'None') {
+                filteredRunes.push(rune)
+              } else {
+                for (const subStat of rune.sec_eff) {
+                  if (subStat[0] === subStatTwoId) {
+                    filteredRunes.push(rune);
+                  }
+                }
+              }
+            } else {
+              for (const subStat of rune.sec_eff) {
+                if (subStat[0] === subStatOneId) {
+                  if (subStatTwo === 'None') {
+                    filteredRunes.push(rune);
+                  } else {
+                    for (const subStat2 of rune.sec_eff) {
+                      if (subStat[0] === subStatTwoId) {
+                        filteredRunes.push(rune);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

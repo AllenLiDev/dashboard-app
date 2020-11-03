@@ -12,6 +12,11 @@ const getSetName = (id) => {
   return setNames[id - 1];
 };
 
+// return the id of rune set for given name
+const getSetId = (name) => {
+  return setNames.indexOf(name) + 1;
+};
+
 // array with stat type names
 const statNames = [
   'HP+', 'HP%', "ATK+", "ATK%", 'DEF+', "DEF%", '7. Error', 'SPD', 'CRI RATE', 'CRI DMG', 'Resistance', 'Accuracy'
@@ -20,6 +25,11 @@ const statNames = [
 // returns the name of type of stat for given id
 const getStatName = (id) => {
   return statNames[id - 1];
+};
+
+// return the id of rune stat for given name
+const getStatId = (name) => {
+  return statNames.indexOf(name) + 1;
 };
 
 // array with grades
@@ -61,6 +71,8 @@ const fastestInSet = (data, set, slot, amount) => {
 export {
   getSetName,
   getStatName,
+  getSetId,
+  getStatId,
   getRuneGrade,
   fastestInSet,
 }

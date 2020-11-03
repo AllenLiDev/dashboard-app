@@ -9,6 +9,7 @@ import { Grid } from '@material-ui/core';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 
+import Rune from './Rune';
 import runeImage from './rune.jpg';
 
 
@@ -39,6 +40,12 @@ const RuneMenu = (props) => {
   const [subStatOne, setSubStatOne] = useState('None');
   const [subStatTwo, setSubStatTwo] = useState('None');
 
+
+  let count = 1;
+  for (let rune of props.data) {
+    rune.id = count++;
+  }
+
   const changeRune = (event) => {
     setRuneFilter(event.target.value);
   };
@@ -60,10 +67,10 @@ const RuneMenu = (props) => {
       <Grid container spacing={2}>
         <Grid container item xs={6} direction="column">
           <Grid item>
-            1
+            <Rune rune={props.data[0]} />
           </Grid>
           <Grid item>
-            2
+            <Rune rune={props.data[1]} />
           </Grid>
         </Grid>
         <Grid container item xs={6} direction="column">

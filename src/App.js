@@ -48,9 +48,7 @@ const App = () => {
   return (
     <div className="App">
       {runes.length} runes found
-      <Runes data={runes}/>
-      <Stats fastest={fastestInSet(runes)} />
-      <RuneMenu />
+      <RuneMenu data={runes}/>
     </div>
   );
 }

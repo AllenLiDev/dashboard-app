@@ -2,9 +2,9 @@ import React from 'react';
 
 const Stats = (props) => {
   const fastestRunes = props.fastest;
-  console.log(fastestRunes);
+
   return (
-    <div>works</div>
+    <div>{fastestRunes[0][0]}</div>
   )
 }
 

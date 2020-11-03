@@ -1,6 +1,7 @@
 import React from 'react';
 import Runes from './Runes';
 import Stats from './Stats';
+import RuneMenu from './RuneMenu';
 
 // data import
 import testData from './swarfarm.json';
@@ -49,6 +50,7 @@ const App = () => {
       {runes.length} runes found
       <Runes data={runes}/>
       <Stats fastest={fastestInSet(runes)} />
+      <RuneMenu />
     </div>
   );
 }

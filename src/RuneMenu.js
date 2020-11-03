@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -31,20 +31,42 @@ const statNames = [
   'None', 'HP+', 'HP%', "ATK+", "ATK%", 'DEF+', "DEF%", 'SPD', 'CRI RATE', 'CRI DMG', 'Resistance', 'Accuracy'
 ];
 
+const slots = [
+  'None', '1', '2', '3', '4', '5', '6'
+];
+
 const RuneMenu = (props) => {
   const classes = useStyles();
 
   const [runeFilter, setRuneFilter] = useState('None');
-  const [slotFilter, setSlotFilter] = useState();
+  const [slotFilter, setSlotFilter] = useState('None');
   const [statFilter, setStatFilter] = useState('None');
   const [subStatOne, setSubStatOne] = useState('None');
   const [subStatTwo, setSubStatTwo] = useState('None');
+
 
 
   let count = 1;
   for (let rune of props.data) {
     rune.id = count++;
   }
+
+  useEffect(() => {
+    let filteredRunes = []
+    for(const rune of props.data) {
+      console.log(rune.slot_no, slotFilter)
+      if(slotFilter != 'None'){
+        if(rune.slot_no == slotFilter){
+          filteredRunes.push(rune);
+        }
+      }
+    }
+    console.log(filteredRunes);
+  });
+
+  const changeSlot = (event) => {
+    setSlotFilter(event.target.value);
+  };
 
   const changeRune = (event) => {
     setRuneFilter(event.target.value);
@@ -65,7 +87,7 @@ const RuneMenu = (props) => {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid container item xs={6} direction="column">
+        <Grid container item xs={5} direction="column">
           <Grid item>
             <Rune rune={props.data[0]} />
           </Grid>
@@ -73,8 +95,21 @@ const RuneMenu = (props) => {
             <Rune rune={props.data[1]} />
           </Grid>
         </Grid>
-        <Grid container item xs={6} direction="column">
+        <Grid container item xs={7} direction="column">
           <Grid item>
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-label">Rune Slot </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={slotFilter}
+                onChange={changeSlot}
+              >
+                {slots.map((slot) => (
+                  <MenuItem value={slot}>{slot}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-simple-select-label">Rune Set</InputLabel>
               <Select
@@ -128,7 +163,7 @@ const RuneMenu = (props) => {
               </Select>
             </FormControl>
           </Grid>
-          <GridList cellHeight={80} className={classes.gridList} cols={6}>
+          <GridList cellHeight={80} className={classes.gridList} cols={7}>
             {runeSets.map((tile) => (
               <GridListTile cols={1}>
                 <img src={runeImage} />

@@ -68,6 +68,20 @@ const fastestInSet = (data, set, slot, amount) => {
   return fastest;
 }
 
+// returns efficient of given rune
+const efficiency = (rune) => {
+  // pseudo
+  // calculate individual efficiency for each substat
+  // take substat divided by maximum roll and return that number
+  // add all individual substat number
+  // add any inate number - same calculation
+  // divided by 5
+  // *edge case can exist ancient runes, but i think calculatino same
+
+  // return a percent in decimal or number or string
+  return 0;
+}
+
 export {
   getSetName,
   getStatName,
@@ -75,4 +89,5 @@ export {
   getStatId,
   getRuneGrade,
   fastestInSet,
+  efficiency,
 }

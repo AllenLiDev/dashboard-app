@@ -82,6 +82,14 @@ const efficiency = (rune) => {
   return 0;
 }
 
+const recommendation = (runes) => {
+  // foreach
+  // get all with inate
+  // sort by resist -> acc -> cdmg -> crit
+  // sort by spd / cdmg /att
+  // cross check with low spd and slots that need help most
+}
+
 export {
   getSetName,
   getStatName,

@@ -88,6 +88,7 @@ const recommendation = (runes) => {
   // sort by resist -> acc -> cdmg -> crit
   // sort by spd / cdmg /att
   // cross check with low spd and slots that need help most
+  return 0;
 }
 
 export {
@@ -98,4 +99,5 @@ export {
   getRuneGrade,
   fastestInSet,
   efficiency,
+  recommendation,
 }
